@@ -6,12 +6,14 @@ class Member(private var number: Int, private var degree: Int) {
 
 	private var member = setMember()
 
-	private fun setMember(): String = when (degree) {
+	fun setMember(): String = when (degree) {
 		0    -> "$number"
 		else -> "$number" + "x^$degree"
 	}
 
 	fun getDegree(): Int = this.degree
+
+	fun getNumber(): Int = this.number
 
 	override fun toString(): String = this.member
 
@@ -21,7 +23,7 @@ class Member(private var number: Int, private var degree: Int) {
 	}
 
 	fun setNumber(n: Int) {
-		this.number
+		this.number = n
 		setMember()
 	}
 
