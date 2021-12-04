@@ -1,0 +1,24 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - 'Misha'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Set gradlew permission
+        run: chmod +x gradlew
+      - name: Clean cache
+        run: ./gradlew clean
+      - name: Build with Gradle
+        run: ./gradlew assembleDebug
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
